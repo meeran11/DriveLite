@@ -1,2 +1,17 @@
-# DriveLite
-DriveLite- A Secure File Storage &amp; Sharing App A full-stack file storage platform built with Node.js, Express, MongoDB, and Supabase. Users can upload, view, and share files through public links, with support for user authentication, secure downloads, and cloud storage integration.
+## DriveLite 🔐
+DriveLite is a lightweight cloud file manager where users can securely upload, download, and share files with signed public links.
+
+### 🚀 Tech Stack
+- Node.js + Express
+- MongoDB (with Mongoose)
+- Supabase (for storage + signed URLs)
+- EJS + TailwindCSS (for frontend)
+- JWT Authentication
+
+### 🌐 Features
+- User Registration & Login
+- Upload & Download Files
+- Generate Public Share Links
+- View File Metadata (Size, Type, Date)
+- Delete Files Securely
+
