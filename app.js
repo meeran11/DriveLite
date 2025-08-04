@@ -1,9 +1,8 @@
+const dotenv = require('dotenv').config();
 const express = require('express');
 const userRoutes = require('./routes/user.routes');
 const indexRoutes = require('./routes/index.routes');
 const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv');
-dotenv.config();
 const connectDB = require('./config/db');
 connectDB();
 
@@ -14,7 +13,9 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-
+app.get("/", (req, res) => {
+    res.redirect("/user/login");
+  });
 app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 
