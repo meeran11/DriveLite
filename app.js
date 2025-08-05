@@ -16,6 +16,10 @@ app.use(cookieParser());
 
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
+// const path = require('path');
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'favicon.ico'));
+});
 
 
 app.get("/", (req, res) => {
