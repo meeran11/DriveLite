@@ -29,7 +29,7 @@ router.post('/register',body('email').trim().isEmail().isLength({ min: 15 }),
 })
 
 router.get('/login', (req, res) => {
-    res.send('login');
+    res.render('login');
 })
 
 router.post('/login',body('username').trim().isLength({ min: 3 }),
