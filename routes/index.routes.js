@@ -26,36 +26,74 @@ router.get('/home', authMiddleware, async (req, res) => {
   res.render('home', { files: filesWithSignedUrls ,user:user.username});
 });
 
-router.post('/upload',authMiddleware, upload.single('file'), async (req, res) => {
+// router.post('/upload',authMiddleware, upload.single('file'), async (req, res) => {
+//     const file = req.file;
+//     const filePath = `uploads/${Date.now()}_${file.originalname}`;
   
+//     const { data, error } = await bucket.upload(filePath, file.buffer, {
+//       contentType: file.mimetype,
+//       upsert: true
+//     });
+  
+//     if (error) {
+//       return res.status(500).json({ error: error.message });
+//     }
+  
+//     const { data: publicUrl } = bucket.getPublicUrl(filePath);
+  
+//     const newFile = new fileModel({
+//       originalName: file.originalname,
+//       mimetype: file.mimetype,
+//       size: file.size,
+//       path: data.path,
+//       publicUrl: publicUrl.publicUrl,
+//       user: req.user.id, // from auth middleware
+//       uploadedAt: new Date()
+//     });
+
+//     await newFile.save();
+
+//     res.redirect("/home")
+//   });
+
+router.post('/upload', authMiddleware, upload.single('file'), async (req, res) => {
+  try {
     const file = req.file;
+    if (!file) return res.status(400).json({ error: "No file received" });
+
     const filePath = `uploads/${Date.now()}_${file.originalname}`;
-  
+
     const { data, error } = await bucket.upload(filePath, file.buffer, {
       contentType: file.mimetype,
       upsert: true
     });
-  
+
     if (error) {
+      console.error("Bucket upload error:", error);
       return res.status(500).json({ error: error.message });
     }
-  
+
     const { data: publicUrl } = bucket.getPublicUrl(filePath);
-  
+
     const newFile = new fileModel({
       originalName: file.originalname,
       mimetype: file.mimetype,
       size: file.size,
       path: data.path,
       publicUrl: publicUrl.publicUrl,
-      user: req.user.id, // from auth middleware
+      user: req.user.id,
       uploadedAt: new Date()
     });
 
     await newFile.save();
 
-    res.redirect("/home")
-  });
+    res.redirect("/home");
+  } catch (err) {
+    console.error("Upload route error:", err);
+    res.status(500).json({ error: "fetch failed" });
+  }
+});
+
 
 router.get('/download',authMiddleware,async (req,res)=>{
     const loggedInUserID = req.user.id;
