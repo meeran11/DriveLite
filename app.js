@@ -18,7 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get("/", (req, res) => {
-    res.redirect("/user/login");
+    res.render('index')
+    // res.redirect("/user/login");
   });
 app.use('/', indexRoutes);
 app.use('/user', userRoutes);

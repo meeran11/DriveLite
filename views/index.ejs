@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body class="dark:bg-gray-900 bg-blue-100">
+  <div class="min-h-screen flex flex-col w-full">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <i class="ri-cloud-line text-2xl sm:text-3xl text-blue-600 mr-2 sm:mr-3"></i>
+            <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Drive Lite</h1>
+          </div>
+          <div class="flex space-x-2 sm:space-x-4">
+            <a href="/user/login" class="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded-lg text-sm sm:text-base font-medium transition-colors duration-200">
+              Login
+            </a>
+            <a href="/user/register" class="bg-gray-600 hover:bg-gray-700 text-white px-3 sm:px-4 py-2 rounded-lg text-sm sm:text-base font-medium transition-colors duration-200">
+              Register
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <!-- Hero Section -->
+      <section class="py-12 sm:py-16 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div class="text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+              Secure File Storage & Sharing
+            </h2>
+            <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto">
+              Store, organize, and share your files securely in the cloud. 
+              Access your files from anywhere, anytime.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/user/register" class="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold text-center transition-colors duration-200">
+                Get Started Free
+              </a>
+              <a href="/user/login" class="bg-gray-600 hover:bg-gray-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold text-center transition-colors duration-200">
+                Sign In
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="py-12 sm:py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+            Features
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Feature 1 -->
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 sm:p-8 rounded-lg">
+              <div class="flex items-center mb-4">
+                <i class="ri-upload-cloud-line text-3xl sm:text-4xl text-blue-600 mr-3"></i>
+                <h4 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">Easy Upload</h4>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                Drag and drop or click to upload your files quickly and securely.
+              </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 sm:p-8 rounded-lg">
+              <div class="flex items-center mb-4">
+                <i class="ri-shield-check-line text-3xl sm:text-4xl text-green-600 mr-3"></i>
+                <h4 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">Secure Storage</h4>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                Your files are encrypted and stored securely in the cloud.
+              </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 sm:p-8 rounded-lg">
+              <div class="flex items-center mb-4">
+                <i class="ri-share-line text-3xl sm:text-4xl text-purple-600 mr-3"></i>
+                <h4 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">Easy Sharing</h4>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">
+                Share files with anyone using secure, time-limited links.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="text-center">
+          <p class="text-sm sm:text-base">
+            © 2024 Drive Project. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>
