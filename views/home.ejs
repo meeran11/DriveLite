@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html class="h-screen overflow-hidden">
 <head>
@@ -130,49 +131,183 @@
       hi.classList.toggle('hidden');
       icon.classList.toggle('rotate-180');
     }
+=======
+                                <!DOCTYPE html>
+                                <html class="h-screen overflow-hidden">
+                                <head>
+                                  <meta charset="UTF-8" />
+                                  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                                  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+                                  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+                                  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+                                  <style>
+                                    .scrollbar-none {
+                                      scrollbar-width: none;
+                                      -ms-overflow-style: none;
+                                    }
+                                    .scrollbar-none::-webkit-scrollbar {
+                                      display: none;
+                                    }
+                                  </style>
+                                </head>
 
-    function show() {
-      document.querySelector("#upload").style.display = "none";
-      document.querySelector("#files").style.display = "none";
-      document.querySelector("#hello").style.display = "flex";
-    }
+                                <body class="h-screen flex flex-col dark:bg-gray-900 bg-blue-300 overflow-hidden">
+                                  <!-- Header -->
+                                  <header class="bg-blue-100 dark:bg-gray-800 shadow-sm shrink-0">
+                                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                                      <div class="flex justify-between items-center py-4">
+                                        <div class="flex items-center">
+                                          <i class="ri-cloud-line text-2xl sm:text-3xl text-blue-600 mr-2 sm:mr-3"></i>
+                                          <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Drive Lite</h1>
+                                        </div>
+                                        <div class="relative">
+                                          <i id="icon1" onclick="showhi()" class="ri-arrow-down-s-fill text-2xl dark:text-white cursor-pointer transition-transform duration-300"></i>
+                                          <div id="hi" class="hidden absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col items-stretch z-50 overflow-hidden animate-fade-in">
+                                            <div class="flex flex-col items-center justify-center py-4 px-6 bg-gradient-to-r from-blue-600 to-blue-400 dark:from-gray-700 dark:to-gray-800">
+                                              <i class="ri-user-3-fill text-3xl text-white mb-2"></i>
+                                              <span class="text-white text-lg font-semibold truncate max-w-full"><%= user %></span>
+                                            </div>
+                                            <form action="/logout" method="post" class="w-full">
+                                              <button class="w-full py-3 text-base font-semibold text-red-600 hover:bg-red-50 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none">
+                                                <i class="ri-logout-box-r-line mr-2"></i>Logout
+                                              </button>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </header>
 
-    function hide() {
-      document.querySelector("#upload").style.display = "flex";
-      document.querySelector("#hello").style.display = "none";
-      document.querySelector("#files").style.display = "flex";
-    }
+                                  <!-- Main Body -->
+                                  <div class="p-4 flex flex-col flex-1 overflow-hidden w-full">
+                                    <!-- Upload Button -->
+                                    <button id="upload" onclick="show()"
+                                      class="mt-4 w-36 sm:w-64 text-center text-xl font-semibold p-2 rounded-xl text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 transition duration-300 ease-in-out dark:bg-blue-800 bg-blue-700">
+                                      Upload Files
+                                    </button>
 
-    async function downloadFile(url, filename) {
-      try {
-        const response = await fetch(url);
-        const blob = await response.blob();
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      } catch (err) {
-        alert("Download failed!");
-        console.error(err);
-      }
-    }
+                                    <!-- Upload Form -->
+                                    <form action="/upload" method="post" enctype="multipart/form-data">
+                                      <div id="hello" class="hidden flex-col items-center justify-center h-full">
+                                        <div class="absolute top-40 right-5 sm:top-16 sm:right-6">
+                                          <i onclick="hide()" class="ri-close-circle-line text-4xl hover:opacity-50 dark:text-white cursor-pointer"></i>
+                                        </div>
+                                        <div class="flex w-76 sm:w-104 items-center justify-center">
+                                          <label for="dropzone-file"
+                                            class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 flex flex-col items-center justify-center h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-400 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                              <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                              </svg>
+                                              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                                <span class="font-semibold">Click to upload</span> or drag and drop
+                                              </p>
+                                              <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                            </div>
+                                            <input id="dropzone-file" type="file" class="hidden" name="file" />
+                                          </label>
+                                        </div>
+                                        <button type="submit"
+                                          class="mt-10 text-white bg-gray-600 hover:bg-gray-800 p-4 py-2 text-xl font-semibold rounded-xl">
+                                          Upload
+                                        </button>
+                                      </div>
+                                    </form>
 
-    function toggleDetails(id, icon) {
-      const details = document.getElementById(`details-${id}`);
-      details.classList.toggle('hidden');
-      icon.classList.toggle('-rotate-90');
-    }
+                                    <!-- Files Section -->
+                                    <div id="files" class="mt-4 flex flex-col gap-2 overflow-y-auto scrollbar-none flex-1 pb-24">
+                                      <% files.forEach((file) => { %>
+                                        <div class="dark:bg-gray-400 bg-blue-100 rounded-lg p-4 flex flex-col gap-4 w-full">
+                                          <div class="flex flex-col gap-2 sm:flex-row sm:gap-0 justify-between items-center">
+                                            <h1 class="text-black font-semibold"><%= file.originalName %></h1>
+                                            <div class="flex items-center gap-2">
+                                              <button onclick="copyLink('<%= file.signedUrl %>')" class="bg-gray-900 px-4 py-2 text-white rounded-md hover:bg-gray-600">
+                                                <i class="ri-link"></i>
+                                              </button>
+                                              <form action="/delete/<%= file._id %>" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                <button type="submit" class="bg-red-500 px-4 py-2 text-white rounded-md hover:bg-red-700">
+                                                  <i class="ri-delete-bin-fill"></i>
+                                                </button>
+                                              </form>
+                                              <a href="#" onclick="downloadFile('<%= file.signedUrl %>', '<%= file.originalName %>')"
+                                                class="bg-blue-800 px-4 py-2 text-white rounded-lg hover:bg-blue-600">
+                                                <i class="ri-download-2-fill"></i>
+                                              </a>
+                                              <a href="<%= file.signedUrl %>" target="_blank"
+                                                class="bg-green-600 px-4 py-2 text-white rounded-lg hover:bg-green-800">
+                                                <i class="ri-eye-fill"></i>
+                                              </a>
+                                              <i class="ri-arrow-drop-down-fill text-3xl cursor-pointer transition-transform duration-300"
+                                                onclick="toggleDetails('<%= file._id %>', this)"></i>
+                                            </div>
+                                          </div>
 
-    function copyLink(url) {
-      navigator.clipboard.writeText(url)
-        .then(() => alert("Public link copied to clipboard!"))
-        .catch((err) => {
-          console.error("Failed to copy link:", err);
-          alert("Failed to copy link.");
-        });
-    }
-  </script>
-</body>
-</html>
+                                          <!-- Collapsible -->
+                                          <div id="details-<%= file._id %>" class="hidden">
+                                            <div class="mt-2 p-4 dark:bg-white bg-gray-600 rounded-md text-sm text-black">
+                                              <p><strong>Uploaded:</strong> <%= file.uploadedAt?.toLocaleString() || "N/A" %></p>
+                                              <p><strong>Type:</strong> <%= file.mimetype || "Unknown" %></p>
+                                              <p><strong>Size:</strong> <%= (file.size / 1024).toFixed(2) %> KB</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      <% }) %>
+                                    </div>
+                                  </div>
+
+                                  <!-- JS -->
+                                  <script>
+                                    function showhi() {
+                                      const icon = document.getElementById('icon1');
+                                      const hi = document.getElementById('hi');
+                                      hi.classList.toggle('hidden');
+                                      icon.classList.toggle('rotate-180');
+                                    }
+
+                                    function show() {
+                                      document.querySelector("#upload").style.display = "none";
+                                      document.querySelector("#files").style.display = "none";
+                                      document.querySelector("#hello").style.display = "flex";
+                                    }
+>>>>>>> e4c09c3f173dd12732b6beb02057e065ca6f90cb
+
+                                    function hide() {
+                                      document.querySelector("#upload").style.display = "flex";
+                                      document.querySelector("#hello").style.display = "none";
+                                      document.querySelector("#files").style.display = "flex";
+                                    }
+
+                                    async function downloadFile(url, filename) {
+                                      try {
+                                        const response = await fetch(url);
+                                        const blob = await response.blob();
+                                        const a = document.createElement('a');
+                                        a.href = URL.createObjectURL(blob);
+                                        a.download = filename;
+                                        document.body.appendChild(a);
+                                        a.click();
+                                        document.body.removeChild(a);
+                                      } catch (err) {
+                                        alert("Download failed!");
+                                        console.error(err);
+                                      }
+                                    }
+
+                                    function toggleDetails(id, icon) {
+                                      const details = document.getElementById(`details-${id}`);
+                                      details.classList.toggle('hidden');
+                                      icon.classList.toggle('-rotate-90');
+                                    }
+
+                                    function copyLink(url) {
+                                      navigator.clipboard.writeText(url)
+                                        .then(() => alert("Public link copied to clipboard!"))
+                                        .catch((err) => {
+                                          console.error("Failed to copy link:", err);
+                                          alert("Failed to copy link.");
+                                        });
+                                    }
+                                  </script>
+                                </body>
+                                </html>
