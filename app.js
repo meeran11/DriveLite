@@ -23,8 +23,15 @@ app.get("/", (req, res) => {
 app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// NEW CODE
+const port = process.env.PORT || 3000;
 
+// Only listen if NOT running on Vercel (allows you to still run locally)
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
+// Required for Vercel
+module.exports = app;
